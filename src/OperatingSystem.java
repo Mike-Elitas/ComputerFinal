@@ -78,11 +78,31 @@ public class OperatingSystem {
     }
 
 
-    public void installSoftware(Software osSoftware) {
-        this.osSoftwares.add(osSoftware);
+    public void installSoftware(Software sw,Computer c) {
+        if (c.getHardDisk() >= sw.getSoftwareSpaceRequirement() && c.getRamMemory() >= sw.getSoftwareRamMemoryRequirement()) {
+            this.osSoftwares.add(sw);
+            c.setRamMemory(c.getRamMemory() - sw.getSoftwareRamMemoryRequirement());
+            c.setHardDisk(c.getHardDisk() - sw.getSoftwareSpaceRequirement());
+            System.out.println("Instalado correctamente " + sw.getSoftwareName() + ".\n Actualmente hay un espacio en el disco de: " + c.getHardDisk() + " y una RAM de " + c.getRamMemory() + "\n");
+            swInstalado++;
+        } else {
+            System.out.println("No hay suficiente espacio en el disco o no hay suficiente RAM" + "\n");
+        }
     }
-    public void uninstallSoftware(Software osSoftware) {
-        this.osSoftwares.remove(osSoftware);
+    public void uninstallSoftware(Software sw,Computer c) {
+        this.osSoftwares.remove(sw);
+        c.setRamMemory(c.getRamMemory() + sw.getSoftwareRamMemoryRequirement());
+        c.setHardDisk(c.getHardDisk() + sw.getSoftwareSpaceRequirement());
+        System.out.println("Desnstalado correctamente " + sw.getSoftwareName() + ".\n Actualmente hay un espacio en el disco de: " + c.getHardDisk() + " y una RAM de " + c.getRamMemory() + "\n");
+        swInstalado--;
+    }
+    public void viewSoftware(Computer c){
+        for (int i = 0; i < swInstalado ; i++) {
+            c.getOs().osSoftwares.get(i);
+            System.out.println("Los softwares instalados son: ");
+            System.out.println( osSoftwares.get(i).getSoftwareName() + " ");
 
+        }
+        System.out.println("\n");
     }
 }
