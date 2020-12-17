@@ -49,6 +49,10 @@ public class OperatingSystem {
         return swInstalado;
     }
 
+    public ArrayList<Software> getOsSoftwares() {
+        return osSoftwares;
+    }
+
     //Setters
     public void setOsName(String osName) {
         this.osName = osName;

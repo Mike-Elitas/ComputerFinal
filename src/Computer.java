@@ -61,6 +61,11 @@ public class Computer {
     public void reformat(OperatingSystem os){
         hardDisk += os.getOsSpaceRequirement();
         ramMemory += os.getOsRamMemmoryRequirement();
+        for (int i = 0; i < os.getSwInstalado(); i++) {
+            this.hardDisk+=os.getOsSoftwares().get(i).getSoftwareSpaceRequirement();
+            this.ramMemory+=os.getOsSoftwares().get(i).getSoftwareRamMemoryRequirement();
+        }
+
         System.out.println("El disco ha sido reformateado y su espacio es: "+ getHardDisk() + " y la memoria RAM disponible es: "+ getRamMemory());
     }
 }

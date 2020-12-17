@@ -11,7 +11,7 @@ public class Main {
         c1.getOs().installSoftware(sw2,c1);
         c1.getOs().viewSoftware(c1);
         c1.getOs().uninstallSoftware(sw1,c1);
-        c1.getOs().uninstallSoftware(sw2,c1);
+        c1.getOs().installSoftware(sw1,c1);
         c1.reformat(os1);
     }
 }
