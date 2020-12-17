@@ -58,4 +58,9 @@ public class Computer {
             System.out.println("No hay espacio en el disco o suficiente memoria RAM");
         }
     }
+    public void reformat(OperatingSystem os){
+        hardDisk += os.getOsSpaceRequirement();
+        ramMemory += os.getOsRamMemmoryRequirement();
+        System.out.println("El disco ha sido reformateado y su espacio es: "+ getHardDisk() + " y la memoria RAM disponible es: "+ getRamMemory());
+    }
 }

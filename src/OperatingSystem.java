@@ -97,10 +97,10 @@ public class OperatingSystem {
         swInstalado--;
     }
     public void viewSoftware(Computer c){
+        System.out.println("Los softwares instalados son: ");
         for (int i = 0; i < swInstalado ; i++) {
             c.getOs().osSoftwares.get(i);
-            System.out.println("Los softwares instalados son: ");
-            System.out.println( osSoftwares.get(i).getSoftwareName() + " ");
+            System.out.print( osSoftwares.get(i).getSoftwareName() + " ");
 
         }
         System.out.println("\n");
