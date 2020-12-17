@@ -5,11 +5,11 @@ public class Computer {
     private OperatingSystem os;
 
     //Builder
-    public Computer(String name, int ramMemory, int hardDisk, OperatingSystem os) {
+    public Computer(String name, int ramMemory, int hardDisk) {
         this.name = name;
         this.ramMemory = ramMemory;
         this.hardDisk = hardDisk;
-        this.os = os;
+        this.os = null;
     }
 
     //Getters
@@ -49,9 +49,10 @@ public class Computer {
     //Methods
 
     public void install(OperatingSystem os){
-        if (this.os!=null && hardDisk>os.getOsSpaceRequirement() && ramMemory>os.getOsRamMemmoryRequirement()) {
-            hardDisk -= os.getOsSpaceRequirement();
-            ramMemory-= os.getOsRamMemmoryRequirement();
+        if (this.hardDisk>os.getOsSpaceRequirement() && this.ramMemory>os.getOsRamMemmoryRequirement()) {
+            this.hardDisk -= os.getOsSpaceRequirement();
+            this.ramMemory-= os.getOsRamMemmoryRequirement();
+            this.setOs(os);
         }
         else
         {
@@ -65,7 +66,7 @@ public class Computer {
             this.hardDisk+=os.getOsSoftwares().get(i).getSoftwareSpaceRequirement();
             this.ramMemory+=os.getOsSoftwares().get(i).getSoftwareRamMemoryRequirement();
         }
-
+        this.setOs(null);
         System.out.println("El disco ha sido reformateado y su espacio es: "+ getHardDisk() + " y la memoria RAM disponible es: "+ getRamMemory());
     }
 }
